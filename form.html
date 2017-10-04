@@ -1,0 +1,113 @@
+<!doctype HTML>
+<html>
+
+<head>
+  <title>Form Blogs</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="form.css" />
+
+</head>
+
+<body>
+  <div class="wholeform">
+  <center>
+    <h2>Sign up for a blog</h2>
+  </center>
+
+  <form action="/" method="POST">
+    <p>
+      <label>Title</label>
+      <label>
+        <input type="radio" name="title" value="mr">
+        Mr
+      </label>
+      <label>
+        <input type="radio" name="title" value="mrs">
+        Mrs
+      </label>
+      <label>
+        <input type="radio" name="title" value="miss">
+        Miss
+      </label>
+    </p>
+    <p>
+      <label>First name</label>
+      <input type="text"  name="first-name">
+    </p>
+    <p>
+      <label>Last name</label>
+      <input type="text" name="last-name">
+    </p>
+    <p>
+      <label>Email</label>
+      <input type="email" name="email">
+    </p>
+    <p>
+      <label>Phone number</label>
+      <input type="tel" name="phone">
+    </p>
+    <p>
+      <label>Password</label>
+      <input type="password" name="password">
+    </p>
+    <p>
+      <label>Confirm your password</label>
+      <input type="password">
+    </p>
+    <p>
+      <label>Country</label>
+      <select>
+        <option>select</option>
+        <option>Canada</option>
+        <option>France</option>
+        <option>Germany</option>
+        <option>Italy</option>
+        <option>Japan</option>
+        <option>Russia</option>
+        <option>United Kingdom</option>
+        <option>United States</option>
+      </select>
+    </p>
+
+    <p>
+      <div class="form-group">
+      <label>Comment(s)</label>
+      <textarea class="form-control" rows="3" name="comment"></textarea>
+      </div>
+    </p>
+    <p>
+      <label>
+        <input type="checkbox" value="terms">
+        I agree to the <a href="/terms">terms and conditions</a>
+      </label>
+    </p>
+    <p>
+      <button>
+        Sign up
+      </button>
+    </p>
+  </form>
+</div>
+<!--for the Ajax image to work, image tag needed --->
+<img class="gif">
+<!--to link to an ajax request --->
+<script>
+(function () {
+  var xhr = new XMLHttpRequest();//this is the ajaz request
+  var url = "http://api.giphy.com/v1/gifs/search?q=funny+cat&api_key=dc6zaTOxFJmzC";
+  xhr.onreadystatechange = function() {
+      if (xhr.readyState == 4 && xhr.status == 200) {
+        var giphyObj = JSON.parse(xhr.responseText);
+        var gifDrop = document.querySelector(".gif");//get any elements that a class gif
+        var link = giphyObj.data[1].images.downsized_medium.url;
+        gifDrop.src = link;//assigning in the link to the response
+      }
+  };
+  xhr.open("GET", url, true);
+  xhr.send();//method of the call, handing in URL, where to get in from
+})();
+</script>
+</body>
+
+</html>

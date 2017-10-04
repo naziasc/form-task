@@ -1,0 +1,18 @@
+body {
+  font-family: 'Lobster', cursive;
+}
+
+.wholeform {
+  position: relative;
+  top: 50px
+  left: 25px;
+  border: 2px solid red;
+  box-sizing:border-box;
+  margin: 20px;
+  padding: 25px;
+}
+
+h2 {
+  font-size: 35px;
+  color: red;
+}
